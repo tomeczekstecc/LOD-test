@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
+import { useQuery } from 'react-query'
 import AuthContext from '../../context/auth/authContext';
 import Day from '../../components/day/Day';
 import Nav from '../../components/nav/Nav';
@@ -24,6 +25,9 @@ function Month({ history }) {
   const [month, setMonth] = useState(new Date().getMonth() + 1);
   const [year, setYear] = useState(new Date().getFullYear());
   const [ghostDays, setGhostDays] = useState([]);
+
+  // const { isLoading, isError, data: data1, error } = useQuery('todos', '/api/stat/getallinmonth/2020/10')
+
 
   useEffect(() => {
     const renderGhostDays = () => {
@@ -96,6 +100,10 @@ function Month({ history }) {
     }
   };
 
+  let params = {
+    month, year
+  }
+
   if (data) {
     return (
       <MonthWrapper className='has-background-info-light'>
@@ -116,7 +124,7 @@ function Month({ history }) {
             {ghostDays && ghostDays.map((item, i) => <div key={i}></div>)}
             {renderDays}
           </div>
-          <Statistics data={data} />
+          <Statistics data={data} getDaysFromDataBase={getDaysFromDataBase} params={params} />
         </MonthStyles>
       </MonthWrapper>
     );

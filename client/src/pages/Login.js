@@ -40,8 +40,8 @@ const Login = ({ history }) => {
         username: res.data.username
       });
 
-      history.push('/');
     });
+    history.push('/');
   };
 
   return (

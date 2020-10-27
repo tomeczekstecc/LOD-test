@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-// import { useQuery } from 'react-query';
 
 const Statistics = ({ data }) => {
   const [users, setUsers] = useState([]);
@@ -32,15 +31,13 @@ const Statistics = ({ data }) => {
       }
       arr.push(obj);
     }
-    // console.log(arr);
-    setUsersDays(arr);
+     setUsersDays(arr);
   };
 
   useEffect(() => {
     setUsersFunc();
     countDaysForUsers();
-    countDaysForUsers();
-   console.log(usersDays)
+
   }, [data]);
 
   return (

@@ -18,7 +18,8 @@ const AuthState = (props) => {
           method: 'POST',
           credentials: 'include',
           headers: {
-            'Content-type': 'application/json',
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
           },
         })
       ).json();
